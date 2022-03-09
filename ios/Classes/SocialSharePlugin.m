@@ -40,15 +40,16 @@
              NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.stickerImage" : imgShare,
                                             @"com.instagram.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                             @"com.instagram.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
-                                            @"com.instagram.sharedSticker.contentURL" : attributionURL
+                                            @"com.instagram.sharedSticker.contentURL" : attributionURL,
+//                                            @"string" : @"testing string item" // this does nothing
              }];
              if (@available(iOS 10.0, *)) {
              NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
              // This call is iOS 10+, can use 'setItems' depending on what versions you support
              [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
-                 
                [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
                  //if success
+//                 UIPasteboard.generalPasteboard.string = @"generalPasteboard string";
                  result(@"sharing");
            } else {
                result(@"this only supports iOS 10+");
@@ -67,15 +68,12 @@
                                               @"com.instagram.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                               @"com.instagram.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
                                               @"com.instagram.sharedSticker.contentURL" : attributionURL,
-                                              @"string": "testing string item"
                           }];
                           if (@available(iOS 10.0, *)) {
                           NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
                           // This call is iOS 10+, can use 'setItems' depending on what versions you support
                           [[UIPasteboard generalPasteboard] setItems:pasteboardItems options:pasteboardOptions];
-                          UIPasteboard.general.string = "testing general string";
-                              
-                            [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
+                          [[UIApplication sharedApplication] openURL:urlScheme options:@{} completionHandler:nil];
                               result(@"sharing");
                         } else {
                             result(@"this only supports iOS 10+");
